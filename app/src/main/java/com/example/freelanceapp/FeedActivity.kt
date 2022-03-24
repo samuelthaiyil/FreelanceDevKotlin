@@ -1,11 +1,13 @@
 package com.example.freelanceapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -42,10 +44,11 @@ class FeedActivity: AppCompatActivity() {
 
         }
 
-        val createPost = findViewById<Button>(R.id.create_post_btn)
+        val createPost = findViewById<FloatingActionButton>(R.id.create_post_btn)
 
         createPost.setOnClickListener {
-
+            val intent = Intent(this, NewPostActivity::class.java)
+            startActivity(intent)
         }
     }
 }
