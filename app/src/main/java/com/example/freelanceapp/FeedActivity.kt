@@ -1,7 +1,51 @@
 package com.example.freelanceapp
 
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class FeedActivity: AppCompatActivity() {
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<FeedRecyclerAdapter.ViewHolder>? = null
+    private lateinit var posts: ArrayList<Post>
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.feed)
+
+        db = Firebase.firestore
+        auth = Firebase.auth
+        posts = ArrayList()
+
+        db.collection("Users").document(auth.currentUser?.uid!!).collection("Posts").get().addOnSuccessListener { result ->
+            for (doc in result.documents) {
+                posts.add(Post(doc.getString("fullName")!!, doc.getString("posterUID")!!, doc.getString("postContent")!!, doc.getDouble("likes")!!, doc.getDouble("comments")!!, doc.getDouble("shares")!!))
+                Log.d("D", auth.currentUser?.uid!!)
+            }
+            layoutManager = LinearLayoutManager(this)
+            val postsView = findViewById<RecyclerView>(R.id.posts_view)
+
+            postsView.layoutManager = layoutManager
+            adapter = FeedRecyclerAdapter(posts)
+            postsView.adapter = adapter
+
+        }
+
+        val createPost = findViewById<Button>(R.id.create_post_btn)
+
+        createPost.setOnClickListener {
+
+        }
+    }
 }
