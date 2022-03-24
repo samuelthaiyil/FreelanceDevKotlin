@@ -9,35 +9,19 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="205dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="120dp"
-        android:text="Create An Account"
+        android:layout_width="80dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="111dp"
+        android:text="SIgn In"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/full_name_text"
+        app:layout_constraintBottom_toTopOf="@+id/email_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/full_name_text"
-        style="@android:style/Widget.AutoCompleteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/email_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/email_text"
@@ -63,33 +47,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="86dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/confirm_password_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/confirm_password_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="220dp"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/create_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -98,14 +63,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="21dp"
         android:layout_marginEnd="116dp"
         android:layout_marginBottom="151dp"
         android:background="#3E315A"
         android:backgroundTint="#3E315A"
-        android:text="Create"
+        android:text="Sign In"
+        android:textColor="#90A4AE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password_text" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
