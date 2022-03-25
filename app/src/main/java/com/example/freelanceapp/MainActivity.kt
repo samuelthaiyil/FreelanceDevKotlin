@@ -27,13 +27,20 @@ class MainActivity : AppCompatActivity() {
         val fullName = findViewById<TextView>(R.id.full_name_text)
         val email = findViewById<TextView>(R.id.email_text)
         val password = findViewById<TextView>(R.id.password_text)
+        val specialty = findViewById<TextView>(R.id.specialty)
         val confirmPassword = findViewById<TextView>(R.id.confirm_password_text)
+        val existingAccount = findViewById<Button>(R.id.existing_account)
+
+        existingAccount.setOnClickListener() {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         createButton.setOnClickListener {
               if (fullName.text.toString().isNotEmpty() &&
                   email.text.toString().isNotEmpty() &&
                   password.text.toString().isNotEmpty() &&
-                  confirmPassword.text.toString().isNotEmpty()
+                  confirmPassword.text.toString().isNotEmpty() && specialty.text.toString().isNotEmpty()
              ) {
                  if (confirmPassword.text.toString() == password.text.toString()) {
                      auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
@@ -42,7 +49,8 @@ class MainActivity : AppCompatActivity() {
                                  db.collection("Users").document(task.result.user!!.uid).set(
                                      hashMapOf(
                                          "fullName" to fullName.text.toString(),
-                                         "email" to fullName.text.toString()
+                                         "email" to fullName.text.toString(),
+                                         "specialty" to specialty.text.toString()
                                      )
                                  ).addOnSuccessListener { doc ->
                                      val intent = Intent(this, LoginActivity::class.java)

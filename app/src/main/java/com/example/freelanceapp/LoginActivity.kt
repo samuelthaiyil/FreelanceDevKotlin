@@ -20,6 +20,12 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<TextView>(R.id.email_text)
         val password = findViewById<TextView>(R.id.password_text)
         val login = findViewById<Button>(R.id.sign_in_btn)
+        val createAccount = findViewById<Button>(R.id.create_account)
+
+        createAccount.setOnClickListener() {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         auth = Firebase.auth
 

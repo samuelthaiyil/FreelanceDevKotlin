@@ -32,7 +32,7 @@ class FeedActivity: AppCompatActivity() {
 
         db.collection("Users").document(auth.currentUser?.uid!!).collection("Posts").get().addOnSuccessListener { result ->
             for (doc in result.documents) {
-                posts.add(Post(doc.getString("fullName")!!, doc.getString("posterUID")!!, doc.getString("postContent")!!, doc.getDouble("likes")!!, doc.getDouble("comments")!!, doc.getDouble("shares")!!))
+                posts.add(Post(doc.getString("fullName")!!, doc.getString("posterUID")!!, doc.getString("postContent")!!, doc.getDouble("likes")!!, doc.getDouble("comments")!!, doc.getDouble("shares")!!, doc.id))
                 Log.d("D", auth.currentUser?.uid!!)
             }
             layoutManager = LinearLayoutManager(this)
@@ -45,6 +45,7 @@ class FeedActivity: AppCompatActivity() {
         }
 
         val createPost = findViewById<FloatingActionButton>(R.id.create_post_btn)
+
 
         createPost.setOnClickListener {
             val intent = Intent(this, NewPostActivity::class.java)

@@ -11,7 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
+        android:foregroundTint="#FFFFFF"
+        android:tint="#FFFFFF"
         app:backgroundTint="#3E315A"
+        app:rippleColor="#FFFFFF"
         app:srcCompat="@android:drawable/ic_menu_edit"
         tools:layout_editor_absoluteX="339dp"
         tools:layout_editor_absoluteY="650dp" />
