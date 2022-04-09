@@ -36,6 +36,8 @@ class ProfileActivity : AppCompatActivity() {
         val fullName = findViewById<TextView>(R.id.full_name_text_2)
         val specialty = findViewById<TextView>(R.id.specialty_text)
         val educationListView = findViewById<ListView>(R.id.education_list)
+        val projectsListView = findViewById<ListView>(R.id.proj_list_view)
+
         val education: ArrayList<Education> = ArrayList()
         val projects: ArrayList<Project> = ArrayList()
         val addEducation = findViewById<Button>(R.id.add_education)
@@ -50,9 +52,14 @@ class ProfileActivity : AppCompatActivity() {
         education.add(Education("Harvard Law School", "Member of debate club"));
         education.add(Education("Stanford Medical School", "5.0 Gpa"));
 
+        projects.add(Project("Harvard Law School", "Member of debate club"));
+        projects.add(Project("Stanford Medical School", "5.0 Gpa"));
 
-        val adapter = EducationAdapter(this, education)
-        educationListView.adapter = adapter
+        val eduAdapter = EducationAdapter(this, education)
+        educationListView.adapter = eduAdapter
+
+        val projAdapter = ProjectAdapter(this, projects)
+        projectsListView.adapter = projAdapter
 
         db.collection("Users").document(uid).get().addOnSuccessListener { doc ->
             if (doc != null) {

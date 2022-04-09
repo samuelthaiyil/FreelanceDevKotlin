@@ -7,7 +7,7 @@
     android:background="#24193C">
 
     <TextView
-        android:id="@+id/edu_title"
+        android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -16,12 +16,12 @@
         android:text="Edu Title"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edu_desc"
+        app:layout_constraintBottom_toTopOf="@+id/item_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/edu_desc"
+        android:id="@+id/item_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
