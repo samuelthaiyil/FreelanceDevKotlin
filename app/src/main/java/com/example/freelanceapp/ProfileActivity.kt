@@ -1,12 +1,16 @@
 package com.example.freelanceapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,7 +36,6 @@ class ProfileActivity : AppCompatActivity() {
         auth = Firebase.auth
         db = Firebase.firestore
 
-
         val fullName = findViewById<TextView>(R.id.full_name_text_2)
         val specialty = findViewById<TextView>(R.id.specialty_text)
         val educationListView = findViewById<ListView>(R.id.education_list)
@@ -48,18 +51,32 @@ class ProfileActivity : AppCompatActivity() {
             addProjects.visibility = View.VISIBLE
         }
 
+        addEducation.setOnClickListener {
+            val intent = Intent(this, NewProfileItemActivity::class.java)
+            intent.putExtra("uid", uid)
+            intent.putExtra("mode", "Education")
+            startActivity(intent)
+        }
 
-        education.add(Education("Harvard Law School", "Member of debate club"));
-        education.add(Education("Stanford Medical School", "5.0 Gpa"));
+        addProjects.setOnClickListener {
+            val intent = Intent(this, NewProfileItemActivity::class.java)
+            intent.putExtra("uid", uid)
+            intent.putExtra("mode", "Project")
+            startActivity(intent)
+        }
 
-        projects.add(Project("Harvard Law School", "Member of debate club"));
-        projects.add(Project("Stanford Medical School", "5.0 Gpa"));
+        db.collection("Users").document(uid).collection("Education").get().addOnSuccessListener { result ->
+            for (document in result) {
+                Log.d("test", document.getString("school")!!)
+                education.add(Education(document.getString("school")!!, document.getString("description")!!));
+            }
+        }
 
-        val eduAdapter = EducationAdapter(this, education)
-        educationListView.adapter = eduAdapter
-
-        val projAdapter = ProjectAdapter(this, projects)
-        projectsListView.adapter = projAdapter
+        db.collection("Users").document(uid).collection("Projects").get().addOnSuccessListener { result ->
+            for (document in result) {
+                projects.add(Project(document.getString("name")!!, document.getString("description")!!));
+            }
+        }
 
         db.collection("Users").document(uid).get().addOnSuccessListener { doc ->
             if (doc != null) {
@@ -74,12 +91,8 @@ class ProfileActivity : AppCompatActivity() {
                             education.add(Education(doc.getString("school")!!, doc.getString("description")!!))
                         }
 
-                        val arr = arrayOf("sd", "ds")
-                        val adapter = ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, arr)
-
-                        val listView:ListView = findViewById(R.id.education_list)
-                        listView.setAdapter(adapter)
+                        val eduAdapter = EducationAdapter(this, education)
+                        educationListView.adapter = eduAdapter
                     }
                     db.collection("Users").document(uid).collection("Projects").get().addOnSuccessListener {
                             docs ->
@@ -89,6 +102,9 @@ class ProfileActivity : AppCompatActivity() {
                                 projects.add(Project(doc.getString("name")!!, doc.getString("description")!!))
                             }
                         }
+
+                        val projAdapter = ProjectAdapter(this, projects)
+                        projectsListView.adapter = projAdapter
                     }
                 }
             }

@@ -18,6 +18,10 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".NewProfileItemActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".FeedActivity"
             android:exported="true">
 

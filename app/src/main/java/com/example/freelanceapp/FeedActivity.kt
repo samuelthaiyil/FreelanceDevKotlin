@@ -54,7 +54,6 @@ class FeedActivity: AppCompatActivity() {
 
         val createPost = findViewById<FloatingActionButton>(R.id.create_post_btn)
 
-
         createPost.setOnClickListener {
             val intent = Intent(this, NewPostActivity::class.java)
             startActivity(intent)
