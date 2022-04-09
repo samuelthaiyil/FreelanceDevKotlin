@@ -68,7 +68,7 @@
         android:background="#3E315A"
         android:backgroundTint="#3E315A"
         android:text="Sign In"
-        android:textColor="#90A4AE"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

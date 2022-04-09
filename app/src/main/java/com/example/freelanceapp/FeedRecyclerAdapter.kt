@@ -18,7 +18,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
 
-class FeedRecyclerAdapter(private val data: ArrayList<Post>): RecyclerView.Adapter<FeedRecyclerAdapter.ViewHolder>() {
+class FeedRecyclerAdapter(private val data: ArrayList<Post>, private val likedPosts: ArrayList<String>): RecyclerView.Adapter<FeedRecyclerAdapter.ViewHolder>() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
@@ -38,6 +38,12 @@ class FeedRecyclerAdapter(private val data: ArrayList<Post>): RecyclerView.Adapt
             intent.putExtra("uid", data.get(position).posterUID)
             holder.itemView.getContext().startActivity(intent)
         }
+        Log.d("Hey", likedPosts.size.toString())
+
+        if (likedPosts.contains(data.get(position).postID)) {
+
+            holder.like.text = "Liked"
+        }
 
         holder.like.setOnClickListener() {
             if (holder.like.text.equals("Like")) {
@@ -45,12 +51,23 @@ class FeedRecyclerAdapter(private val data: ArrayList<Post>): RecyclerView.Adapt
                     .document(data.get(position).postID).update(
                     "likes", data.get(position).likes + 1
                 )
+                db.collection("Users").document(auth.currentUser?.uid!!).collection("LikedPosts").document(data.get(position).postID).set(
+                    hashMapOf(
+                        "fullName" to data.get(position).fullName,
+                        "posterUID" to auth.currentUser?.uid!!,
+                        "postContent" to data.get(position).postContent,
+                        "likes" to 0,
+                        "comments" to 0,
+                        "shares" to 0
+                    )
+                )
                 holder.like.text = "Liked"
             } else {
                 db.collection("Users").document(data.get(position).posterUID).collection("Posts")
                     .document(data.get(position).postID).update(
                         "likes", data.get(position).likes - 1
                     )
+                db.collection("Users").document(auth.currentUser?.uid!!).collection("LikedPosts").document(data.get(position).postID).delete();
                 holder.like.text = "Like"
             }
         }
@@ -61,7 +78,6 @@ class FeedRecyclerAdapter(private val data: ArrayList<Post>): RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
-        Log.d("D", data.size.toString())
         return data.size
     }
 

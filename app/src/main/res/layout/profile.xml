@@ -29,7 +29,7 @@
                 android:id="@+id/full_name_text_2"
                 android:layout_width="296dp"
                 android:layout_height="33dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginEnd="35dp"
                 android:layout_marginBottom="14dp"
                 android:text="Full Name"
@@ -45,8 +45,8 @@
                 android:id="@+id/specialty_text"
                 android:layout_width="300dp"
                 android:layout_height="37dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="31dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="29dp"
                 android:text="specialty"
                 android:textAlignment="center"
@@ -79,15 +79,16 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="337dp"
-                android:layout_height="40dp"
+                android:layout_width="111dp"
+                android:layout_height="35dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="133dp"
                 android:text="Education"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/education_list"
+                app:layout_constraintEnd_toStartOf="@+id/add_education"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,6 +104,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <Button
+                android:id="@+id/add_education"
+                android:layout_width="86dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Add"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/education_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -132,16 +146,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="209dp"
+                android:layout_marginEnd="107dp"
                 android:layout_marginBottom="187dp"
                 android:text="Professional Projects"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/add_projects"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/add_projects"
+                android:layout_width="86dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="172dp"
+                android:text="Add"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

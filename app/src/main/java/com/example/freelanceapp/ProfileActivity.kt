@@ -1,7 +1,9 @@
 package com.example.freelanceapp
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +32,27 @@ class ProfileActivity : AppCompatActivity() {
         auth = Firebase.auth
         db = Firebase.firestore
 
+
         val fullName = findViewById<TextView>(R.id.full_name_text_2)
         val specialty = findViewById<TextView>(R.id.specialty_text)
+        val educationListView = findViewById<ListView>(R.id.education_list)
         val education: ArrayList<Education> = ArrayList()
         val projects: ArrayList<Project> = ArrayList()
+        val addEducation = findViewById<Button>(R.id.add_education)
+        val addProjects = findViewById<Button>(R.id.add_projects)
+
+        if (uid == auth.currentUser?.uid!!) {
+            addEducation.visibility = View.VISIBLE
+            addProjects.visibility = View.VISIBLE
+        }
+
+
+        education.add(Education("Harvard Law School", "Member of debate club"));
+        education.add(Education("Stanford Medical School", "5.0 Gpa"));
+
+
+        val adapter = EducationAdapter(this, education)
+        educationListView.adapter = adapter
 
         db.collection("Users").document(uid).get().addOnSuccessListener { doc ->
             if (doc != null) {
