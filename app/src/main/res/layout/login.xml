@@ -56,6 +56,8 @@
         android:hint="Password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:password="true"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_btn"
         app:layout_constraintEnd_toEndOf="parent"
