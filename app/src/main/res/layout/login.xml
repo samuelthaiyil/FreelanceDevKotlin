@@ -16,7 +16,7 @@
         android:layout_marginEnd="166dp"
         android:layout_marginBottom="111dp"
         android:fontFamily="@font/poppins"
-        android:text="SIgn In"
+        android:text="Sign In"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/email_text"
