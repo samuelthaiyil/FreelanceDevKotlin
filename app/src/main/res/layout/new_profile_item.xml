@@ -13,10 +13,12 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="66dp"
         android:layout_marginEnd="160dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/poppins"
         android:text="Add "
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/new_item_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +27,8 @@
         android:id="@+id/new_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="104dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="72dp"
         android:layout_marginBottom="37dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -39,16 +40,15 @@
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/new_item_desc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mode_title" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/new_item_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:fontFamily="@font/poppins"
@@ -66,12 +66,12 @@
         android:id="@+id/add_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="153dp"
-        android:layout_marginBottom="403dp"
         android:fontFamily="@font/poppins"
         android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_item_desc" />
 </androidx.constraintlayout.widget.ConstraintLayout>
