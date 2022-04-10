@@ -65,19 +65,6 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        db.collection("Users").document(uid).collection("Education").get().addOnSuccessListener { result ->
-            for (document in result) {
-                Log.d("test", document.getString("school")!!)
-                education.add(Education(document.getString("school")!!, document.getString("description")!!));
-            }
-        }
-
-        db.collection("Users").document(uid).collection("Projects").get().addOnSuccessListener { result ->
-            for (document in result) {
-                projects.add(Project(document.getString("name")!!, document.getString("description")!!));
-            }
-        }
-
         db.collection("Users").document(uid).get().addOnSuccessListener { doc ->
             if (doc != null) {
                 fullName.text = doc.getString("fullName")!!
@@ -85,7 +72,6 @@ class ProfileActivity : AppCompatActivity() {
 
                 db.collection("Users").document(uid).collection("Education").get().addOnSuccessListener {
                         docs ->
-
                     if (!docs.isEmpty()) {
                         for (doc in docs.documents) {
                             education.add(Education(doc.getString("school")!!, doc.getString("description")!!))

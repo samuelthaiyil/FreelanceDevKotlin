@@ -21,6 +21,7 @@ import kotlin.collections.ArrayList
 class FeedRecyclerAdapter(private val data: ArrayList<Post>, private val likedPosts: ArrayList<String>): RecyclerView.Adapter<FeedRecyclerAdapter.ViewHolder>() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var posterName: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedRecyclerAdapter.ViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.posts, parent, false)
@@ -30,7 +31,7 @@ class FeedRecyclerAdapter(private val data: ArrayList<Post>, private val likedPo
     override fun onBindViewHolder(holder: FeedRecyclerAdapter.ViewHolder, position: Int) {
         auth = Firebase.auth
         db = Firebase.firestore
-
+        posterName = ""
 
         holder.fullName.setOnClickListener() {
 
@@ -38,7 +39,18 @@ class FeedRecyclerAdapter(private val data: ArrayList<Post>, private val likedPo
             intent.putExtra("uid", data.get(position).posterUID)
             holder.itemView.getContext().startActivity(intent)
         }
-        Log.d("Hey", likedPosts.size.toString())
+
+        holder.comment.setOnClickListener() {
+            db.collection("Users").document(auth.currentUser?.uid!!).get().addOnSuccessListener { doc ->
+                posterName = doc.getString("fullName")!!
+
+                val intent = Intent(holder.itemView.getContext(), NewCommentActivity::class.java)
+                intent.putExtra("uid", data.get(position).posterUID)
+                intent.putExtra("posterName", posterName)
+                intent.putExtra("postID", data.get(position).postID)
+                holder.itemView.getContext().startActivity(intent)
+            }
+        }
 
         if (likedPosts.contains(data.get(position).postID)) {
 

@@ -11,12 +11,15 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/feed.xml" value="0.2" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.221875" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/fragment_home.xml" value="0.221875" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/fragment_notifications.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/login.xml" value="0.264" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/new_comment.xml" value="0.264" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/new_post.xml" value="0.264" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/new_profile_item.xml" value="0.4" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/post.xml" value="0.4" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/posts.xml" value="0.4" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/profile.xml" value="0.4" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/FreelanceApp/app/src/main/res/layout/profile_list_view_item.xml" value="0.5781710914454278" />
       </map>
     </option>
   </component>

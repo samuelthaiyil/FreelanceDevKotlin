@@ -46,6 +46,8 @@ class FeedActivity: AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this)
                 val postsView = findViewById<RecyclerView>(R.id.posts_view)
 
+                posts.reverse()
+
                 postsView.layoutManager = layoutManager
                 adapter = FeedRecyclerAdapter(posts, likedPosts)
                 postsView.adapter = adapter
